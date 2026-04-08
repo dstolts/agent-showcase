@@ -52,6 +52,9 @@ export default function RootLayout({
                 <a href="/AgentShowcase/agents" className="text-sm text-text-muted hover:text-white transition-colors">
                   Agents
                 </a>
+                <a href="/AgentShowcase/discussions" className="text-sm text-text-muted hover:text-white transition-colors">
+                  Discussions
+                </a>
                 <a href="/AgentShowcase/stats" className="text-sm text-text-muted hover:text-white transition-colors">
                   Stats
                 </a>
