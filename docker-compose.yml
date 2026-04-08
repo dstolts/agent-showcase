@@ -1,0 +1,50 @@
+version: '3.9'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: agent-showcase-app
+    ports:
+      - "3200:3200"
+    environment:
+      - DATABASE_URL=postgresql://showcase_user:${POSTGRES_PASSWORD:-changeme}@db:5432/agent_showcase
+      - JWT_SECRET=${JWT_SECRET:-change-this-secret-in-production}
+      - API_RATE_LIMIT_DAILY=${API_RATE_LIMIT_DAILY:-20}
+      - NODE_ENV=production
+    depends_on:
+      db:
+        condition: service_healthy
+    restart: unless-stopped
+    networks:
+      - showcase-net
+
+  db:
+    image: postgres:16-alpine
+    container_name: agent-showcase-db
+    ports:
+      - "5434:5432"
+    environment:
+      - POSTGRES_DB=agent_showcase
+      - POSTGRES_USER=showcase_user
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD:-changeme}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./db/schema.sql:/docker-entrypoint-initdb.d/01-schema.sql:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U showcase_user -d agent_showcase"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    restart: unless-stopped
+    networks:
+      - showcase-net
+
+volumes:
+  postgres_data:
+    driver: local
+
+networks:
+  showcase-net:
+    driver: bridge

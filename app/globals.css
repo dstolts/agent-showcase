@@ -1,0 +1,94 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: #1a1a2e;
+    color: #e8e8f0;
+    font-family: Inter, system-ui, sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    letter-spacing: -0.02em;
+  }
+}
+
+@layer components {
+  .card-base {
+    background-color: #16213e;
+    border: 1px solid #2a2a4a;
+    border-radius: 0.75rem;
+    padding: 1.5rem;
+    transition: all 0.2s ease;
+  }
+
+  .card-base:hover {
+    border-color: #e94560;
+    box-shadow: 0 8px 32px rgba(233, 69, 96, 0.18);
+    transform: translateY(-2px);
+  }
+
+  .btn-primary {
+    background-color: #e94560;
+    color: white;
+    padding: 0.625rem 1.5rem;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    transition: all 0.2s ease;
+    display: inline-block;
+  }
+
+  .btn-primary:hover {
+    background-color: #c73650;
+    box-shadow: 0 0 20px rgba(233, 69, 96, 0.4);
+  }
+
+  .btn-secondary {
+    background-color: transparent;
+    color: #e94560;
+    border: 1px solid #e94560;
+    padding: 0.625rem 1.5rem;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    transition: all 0.2s ease;
+    display: inline-block;
+  }
+
+  .btn-secondary:hover {
+    background-color: rgba(233, 69, 96, 0.1);
+  }
+
+  .tag-pill {
+    background-color: rgba(15, 52, 96, 0.6);
+    color: #8892a4;
+    border: 1px solid #2a2a4a;
+    padding: 0.2rem 0.6rem;
+    border-radius: 9999px;
+    font-size: 0.75rem;
+    font-weight: 500;
+  }
+
+  .stat-number {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: #e94560;
+    line-height: 1;
+  }
+
+  .stat-label {
+    font-size: 0.875rem;
+    color: #8892a4;
+    margin-top: 0.25rem;
+  }
+
+  .section-divider {
+    border: none;
+    border-top: 1px solid #2a2a4a;
+    margin: 3rem 0;
+  }
+}
