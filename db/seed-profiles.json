@@ -1,0 +1,677 @@
+[
+  {
+    "type": "win",
+    "agent_name": "Sys Backend",
+    "handle": "sys-backend",
+    "role": "Backend Engineer",
+    "department": "Engineering",
+    "industry": "AI / Software Development",
+    "title": "Contract-first backend engineer that owns every route, middleware, query, and auth boundary -- shipping zero breaking changes without a linked frontend PR.",
+    "content": {
+      "about": "Sys Backend is the contract-first backend engineer for the Just In Time AI engineering organization. It owns every API route, middleware, database query, and authentication boundary. No breaking change ships without a corresponding frontend PR and architect approval.",
+      "capabilities": [
+        "API contract design and enforcement",
+        "Authentication boundary management",
+        "Database query writing and parameterization",
+        "Breaking-change detection and cross-repo coordination",
+        "PR creation with structured findings and file-and-line evidence"
+      ],
+      "human_impact": "Frees the human engineer from constant backend review by ensuring every change is validated against the contract, auth boundaries, and downstream consumers before a PR is even opened."
+    },
+    "tags": ["backend API development", "contract-first engineering", "auth boundary enforcement", "zero breaking changes"],
+    "human": {
+      "name": "Dan Stolts",
+      "company": "Just In Time AI",
+      "url": "https://jitai.co",
+      "linkedin": "https://linkedin.com/in/danstolts"
+    }
+  },
+  {
+    "type": "win",
+    "agent_name": "Sys Frontend",
+    "handle": "sys-frontend",
+    "role": "Frontend Integration Engineer",
+    "department": "Engineering",
+    "industry": "AI / Software Development",
+    "title": "Contract-faithful UI integration engineer that wires components to real API calls, manages auth token flow, and enforces loading, error, and empty states on every view.",
+    "content": {
+      "about": "Sys Frontend is the UI integration layer for Just In Time AI products. It wires Lovable-generated component shells to live data and real auth flows, and enforces that every data-dependent view handles loading, error, and empty states before it ships. It does not design from scratch -- it connects and validates.",
+      "capabilities": [
+        "API contract adherence on every fetch call",
+        "Three-state UI enforcement (loading, error, empty)",
+        "Auth token flow management",
+        "SSE streaming integration via fetch() + ReadableStream",
+        "Next.js Server Component vs Client Component boundary enforcement"
+      ],
+      "human_impact": "Eliminates an entire class of frontend bugs -- blank white pages, silent failures, and broken auth flows -- before they ever reach a user or a QA pass."
+    },
+    "tags": ["frontend integration", "UI state management", "API contract compliance", "React development"],
+    "human": {
+      "name": "Dan Stolts",
+      "company": "Just In Time AI",
+      "url": "https://jitai.co",
+      "linkedin": "https://linkedin.com/in/danstolts"
+    }
+  },
+  {
+    "type": "win",
+    "agent_name": "Sys Security",
+    "handle": "sys-security",
+    "role": "Security Engineer",
+    "department": "Engineering",
+    "industry": "AI / Software Development",
+    "title": "Threat-aware immune system that runs SAST, secrets detection, dependency CVE scanning, AI/LLM risk analysis, and architectural threat modeling -- blocking HIGH and CRITICAL findings on every merge.",
+    "content": {
+      "about": "Sys Security is the security layer of the Just In Time AI engineering organization. It scans every PR across five layers simultaneously: static analysis, secrets detection, dependency CVEs, AI/LLM-specific risks, and architectural threat modeling. On feature branches findings are informational; on uat and main, HIGH and CRITICAL findings block the merge.",
+      "capabilities": [
+        "SAST with Semgrep on every push",
+        "Secrets detection with Gitleaks",
+        "Dependency CVE scanning with Trivy and npm audit",
+        "AI and LLM-specific risk analysis (prompt injection, PII leakage)",
+        "STRIDE threat modeling and OWASP Top 10 review on new endpoints"
+      ],
+      "human_impact": "Removes the security review burden from human engineers entirely for known vulnerability classes, while surfacing only actionable, evidence-backed findings with copy-paste remediation code."
+    },
+    "tags": ["application security", "SAST scanning", "CVE detection", "AI security risks"],
+    "human": {
+      "name": "Dan Stolts",
+      "company": "Just In Time AI",
+      "url": "https://jitai.co",
+      "linkedin": "https://linkedin.com/in/danstolts"
+    }
+  },
+  {
+    "type": "win",
+    "agent_name": "Sys DevOps",
+    "handle": "sys-devops",
+    "role": "DevOps Engineer",
+    "department": "Engineering",
+    "industry": "AI / Software Development",
+    "title": "Pipeline enforcer that owns GitHub Actions, Docker, Azure Container Apps, and branch protection rules -- making the correct path the easy path and the wrong path structurally impossible.",
+    "content": {
+      "about": "Sys DevOps owns the CI/CD infrastructure for Just In Time AI. It builds and maintains GitHub Actions pipelines, Docker images, Azure Container Apps deployments, and branch protection rules. Its core function is enforcement: code cannot reach uat or main without passing build, test, and security gates.",
+      "capabilities": [
+        "GitHub Actions pipeline design and maintenance",
+        "Azure Container Apps deployment management",
+        "Branch protection rule enforcement",
+        "Security gate integration (blocking on unresolved HIGH/CRITICAL findings)",
+        "Deployment state monitoring and failure alerting"
+      ],
+      "human_impact": "Removes the human from deployment verification and gate enforcement. The pipeline either passes or it does not -- no manual checklist, no forgotten security steps, no accidental pushes to main."
+    },
+    "tags": ["CI/CD pipeline", "GitHub Actions", "Azure deployment", "branch protection"],
+    "human": {
+      "name": "Dan Stolts",
+      "company": "Just In Time AI",
+      "url": "https://jitai.co",
+      "linkedin": "https://linkedin.com/in/danstolts"
+    }
+  },
+  {
+    "type": "win",
+    "agent_name": "Sys QA",
+    "handle": "sys-qa",
+    "role": "QA Engineer",
+    "department": "Engineering",
+    "industry": "AI / Software Development",
+    "title": "Critical path guardian that tests the path every user walks every time -- including streaming and delivery mechanism layers -- and blocks merges when those tests fail.",
+    "content": {
+      "about": "Sys QA is the quality gate for Just In Time AI engineering. It tests the critical path -- not the happy path. Every delivery mechanism that sits between a trigger and a result, including SSE streaming, polling, and websockets, gets dedicated test coverage. It runs against real services on uat, not mocks.",
+      "capabilities": [
+        "Critical path test mapping and execution",
+        "SSE and streaming layer test coverage",
+        "Contract test validation",
+        "End-to-end regression testing on uat",
+        "WCAG 2.1 AA accessibility compliance checking"
+      ],
+      "human_impact": "Catches the class of bugs that only appear in production -- the ones that live in the untested middle between trigger and result -- before users ever see them."
+    },
+    "tags": ["QA automation", "critical path testing", "SSE streaming tests", "end-to-end testing"],
+    "human": {
+      "name": "Dan Stolts",
+      "company": "Just In Time AI",
+      "url": "https://jitai.co",
+      "linkedin": "https://linkedin.com/in/danstolts"
+    }
+  },
+  {
+    "type": "win",
+    "agent_name": "Sys Code Reviewer",
+    "handle": "sys-code-reviewer",
+    "role": "Code Reviewer",
+    "department": "Engineering",
+    "industry": "AI / Software Development",
+    "title": "Code quality gate that runs in parallel with security and QA after CI, applying a three-tier review system where Tier 1 blocks merge, Tier 2 blocks uat, and Tier 3 is informational.",
+    "content": {
+      "about": "Sys Code Reviewer is the code quality gate at Just In Time AI. It runs in parallel with security and SRE reviews -- not sequentially -- and applies a structured three-tier system. Tier 1 findings (missing auth, SQL injection, hardcoded secrets, broken contracts) block the merge. Tier 2 findings must be resolved before uat. Tier 3 findings are style-level and informational.",
+      "capabilities": [
+        "Three-tier code review (blocking, uat-gate, informational)",
+        "Contract and function signature validation",
+        "Hardcoded secret and SQL injection detection",
+        "Critical path test coverage verification",
+        "Dead code and duplicate logic detection"
+      ],
+      "human_impact": "Replaces ad-hoc code review with a consistent, tiered standard applied to every PR -- freeing human reviewers for architectural decisions rather than catching missing null checks."
+    },
+    "tags": ["code review automation", "PR quality gate", "security code review", "test coverage enforcement"],
+    "human": {
+      "name": "Dan Stolts",
+      "company": "Just In Time AI",
+      "url": "https://jitai.co",
+      "linkedin": "https://linkedin.com/in/danstolts"
+    }
+  },
+  {
+    "type": "win",
+    "agent_name": "Sys Compliance",
+    "handle": "sys-compliance",
+    "role": "Compliance Engineer",
+    "department": "Engineering",
+    "industry": "AI / Software Development",
+    "title": "Compliance authority that verifies security controls are implemented, documented, and traceable to CIS v8, NIST 800-53, CMMC Level 2, and OSCAL v1.2.1 standards.",
+    "content": {
+      "about": "Sys Compliance owns the audit trail for the Just In Time AI engineering organization. While security finds exploits, compliance verifies that controls are in place, documented, and traceable to their governing framework. It covers CIS v8, NIST 800-53, CMMC Level 2, and produces OSCAL v1.2.1-compliant outputs for client deliverables.",
+      "capabilities": [
+        "CIS v8 control coverage verification",
+        "NIST 800-53 control mapping and documentation",
+        "OSCAL v1.2.1 schema validation for compliance outputs",
+        "CMMC Level 2 readiness tracking",
+        "Compliance gap assignment with owner and target date"
+      ],
+      "human_impact": "Transforms compliance from a quarterly scramble into a continuously verified state -- every control mapped, every gap assigned, every output ready for an auditor on any given day."
+    },
+    "tags": ["CMMC compliance", "NIST 800-53 mapping", "OSCAL documentation", "security controls audit"],
+    "human": {
+      "name": "Dan Stolts",
+      "company": "Just In Time AI",
+      "url": "https://jitai.co",
+      "linkedin": "https://linkedin.com/in/danstolts"
+    }
+  },
+  {
+    "type": "win",
+    "agent_name": "Sys SRE",
+    "handle": "sys-sre",
+    "role": "Site Reliability Engineer",
+    "department": "Engineering",
+    "industry": "AI / Software Development",
+    "title": "Reliability conscience that monitors Golden Signals across all production services, detects degradation before users do, and enforces error budget burn rate alerts.",
+    "content": {
+      "about": "Sys SRE is the reliability layer for Just In Time AI production services. It owns the three pillars of observability -- metrics, logs, and traces -- and operates on Golden Signals (latency, traffic, errors, saturation) with defined SLO targets. Multi-window burn rate alerts fire before users notice anything is wrong.",
+      "capabilities": [
+        "Golden Signal monitoring across all production services",
+        "Multi-window SLO burn rate alerting (1h, 6h, 24h windows)",
+        "Incident severity classification (SEV-1 through SEV-4)",
+        "Progressive rollout monitoring with rollback criteria",
+        "Chaos engineering readiness assessment"
+      ],
+      "human_impact": "Gives the human engineer a single reliability signal instead of a wall of dashboards -- the right alert at the right severity before users open a support ticket."
+    },
+    "tags": ["site reliability engineering", "SLO monitoring", "production observability", "incident response"],
+    "human": {
+      "name": "Dan Stolts",
+      "company": "Just In Time AI",
+      "url": "https://jitai.co",
+      "linkedin": "https://linkedin.com/in/danstolts"
+    }
+  },
+  {
+    "type": "win",
+    "agent_name": "Systems Architect",
+    "handle": "sys-architect",
+    "role": "Systems Architect",
+    "department": "Engineering",
+    "industry": "AI / Software Development",
+    "title": "Master engineering authority that owns system design, API contract parity, and the final PR review gate -- writing Architecture Decision Records and merging only after every upstream agent has approved.",
+    "content": {
+      "about": "Sys Architect is the senior engineering authority for all Just In Time AI repositories. It owns system architecture, API contract parity between backend and frontend, and the final merge gate in the PR review chain. No code merges to uat or main without sys-architect sign-off -- and sys-architect never merges to main without Owner approval.",
+      "capabilities": [
+        "Architecture Decision Record (ADR) authorship",
+        "API contract parity enforcement across sprints",
+        "Final PR gate authority after all upstream agents sign off",
+        "Plan validation for tasks sized 3 or more story points",
+        "Cross-repo coordination and bounded context enforcement"
+      ],
+      "human_impact": "Removes the human from the daily PR review queue while preserving human authority on main branch merges -- the right decisions at the right level of abstraction."
+    },
+    "tags": ["software architecture", "PR review automation", "API contract parity", "architecture decision records"],
+    "human": {
+      "name": "Dan Stolts",
+      "company": "Just In Time AI",
+      "url": "https://jitai.co",
+      "linkedin": "https://linkedin.com/in/danstolts"
+    }
+  },
+  {
+    "type": "win",
+    "agent_name": "Sys Orchestrator",
+    "handle": "sys-orchestrator",
+    "role": "Sprint Orchestrator",
+    "department": "Engineering",
+    "industry": "AI / Software Development",
+    "title": "Engineering sprint orchestrator that assigns work to agents, prevents file conflicts via git worktrees, detects stalled tasks, and keeps the sprint moving without human intervention.",
+    "content": {
+      "about": "Sys Orchestrator runs nightly via Windows Task Scheduler and answers four questions before every sprint: what is ready, who should work on it, what is blocked, and which files will conflict. It assigns work to other agents via GitHub issues, tracks state in sprint-state.json, and escalates stalls to the architect. It does not write or review code -- it keeps work flowing.",
+      "capabilities": [
+        "Daily sprint task assignment across all agent roles",
+        "File conflict prevention via git worktree isolation",
+        "Stalled task detection and escalation (16-hour threshold)",
+        "GitHub issue creation from Hub.md task sources",
+        "Sprint state tracking in sprint-state.json"
+      ],
+      "human_impact": "Replaces the human scrum master function for routine sprint coordination -- the human sets priorities, the orchestrator ensures work moves forward every night without follow-up."
+    },
+    "tags": ["sprint orchestration", "git worktree management", "agent task assignment", "autonomous engineering"],
+    "human": {
+      "name": "Dan Stolts",
+      "company": "Just In Time AI",
+      "url": "https://jitai.co",
+      "linkedin": "https://linkedin.com/in/danstolts"
+    }
+  },
+  {
+    "type": "win",
+    "agent_name": "Sys Monitor",
+    "handle": "sys-monitor",
+    "role": "Pipeline Monitor",
+    "department": "Engineering",
+    "industry": "AI / Software Development",
+    "title": "Read-only pipeline observer that translates raw scheduler state into a structured scorecard -- process health, dispatch activity, stale claims, and concurrency saturation -- in under 60 seconds.",
+    "content": {
+      "about": "Sys Monitor is the eyes on the agent scheduler and dispatch pipeline at Just In Time AI. It reads scheduler logs, deduplication ledger state, claim files, and process health, then returns a structured scorecard with a GREEN/YELLOW/RED overall status. It is purely observational -- it never modifies, restarts, or reconfigures anything.",
+      "capabilities": [
+        "Scheduler process health monitoring",
+        "Agent concurrency saturation tracking",
+        "Stale and stalled claim detection",
+        "GitHub issue churn and dedup ledger analysis",
+        "Structured scorecard output in under 60 seconds"
+      ],
+      "human_impact": "Gives the human a one-line health check on the entire agent pipeline instead of requiring them to read logs, check task scheduler, and grep claim files themselves."
+    },
+    "tags": ["pipeline monitoring", "agent health checks", "scheduler observability", "read-only audit"],
+    "human": {
+      "name": "Dan Stolts",
+      "company": "Just In Time AI",
+      "url": "https://jitai.co",
+      "linkedin": "https://linkedin.com/in/danstolts"
+    }
+  },
+  {
+    "type": "win",
+    "agent_name": "Sys Marketing",
+    "handle": "sys-marketing",
+    "role": "Growth and Discovery Agent",
+    "department": "Marketing",
+    "industry": "AI / Software Development",
+    "title": "Growth and discovery agent for the Agent Showcase that drafts practitioner-voice forum posts, Agent of the Week features, and SEO content -- all queued for human approval before any external publish.",
+    "content": {
+      "about": "Sys Marketing drives discovery for the Just In Time AI Agent Showcase. It monitors AI communities for relevant conversations, drafts value-first forum posts and social content, produces weekly Agent of the Week features, and runs SEO audits on showcase pages. Every piece of external content is queued for human approval -- nothing auto-posts.",
+      "capabilities": [
+        "Community monitoring across Reddit, HN, Discord, and LinkedIn",
+        "Agent of the Week feature drafting (weekly)",
+        "Long-tail SEO article creation",
+        "Forum post drafting in practitioner voice",
+        "Showcase page SEO audit and meta improvement recommendations"
+      ],
+      "human_impact": "Keeps the showcase discoverable with a steady stream of community-appropriate content drafts -- the human approves and sends, spending minutes instead of hours on distribution."
+    },
+    "tags": ["AI community marketing", "SEO content drafting", "practitioner voice content", "agent showcase promotion"],
+    "human": {
+      "name": "Dan Stolts",
+      "company": "Just In Time AI",
+      "url": "https://jitai.co",
+      "linkedin": "https://linkedin.com/in/danstolts"
+    }
+  },
+  {
+    "type": "win",
+    "agent_name": "Executive Assistant",
+    "handle": "executive-assistant",
+    "role": "Executive Assistant",
+    "department": "Operations",
+    "industry": "AI / Software Development",
+    "title": "CEO operational shield that triages a unified inbox across 6 mailboxes, auto-archives 60-70 percent of inbound noise, and surfaces the 30-40 percent that matters in a prioritized twice-daily brief.",
+    "content": {
+      "about": "The Executive Assistant agent manages time, filters noise, prepares context, and tracks commitments for the CEO of Just In Time AI. It reads across 6 mailboxes (4 Microsoft 365 tenants plus Gmail and Live.com), classifies every inbound email, and routes action items to the right downstream agent -- helpdesk, bookkeeper, or lead nurture. No email is ever sent without CEO approval.",
+      "capabilities": [
+        "Unified inbox triage across 6 mailboxes via M365 Graph API and Gmail IMAP",
+        "Priority scoring and noise filtering (60-70 percent auto-archived)",
+        "Twice-daily prioritized briefing delivery",
+        "Downstream routing to helpdesk, bookkeeper, and lead nurture agents",
+        "Meeting prep packets with prospect context and open proposal summaries"
+      ],
+      "human_impact": "Reclaims 60-90 minutes per day of inbox work for the CEO -- every email read, classified, and routed before the CEO sees the morning brief."
+    },
+    "tags": ["email triage automation", "executive inbox management", "M365 Graph API", "CEO productivity"],
+    "human": {
+      "name": "Dan Stolts",
+      "company": "Just In Time AI",
+      "url": "https://jitai.co",
+      "linkedin": "https://linkedin.com/in/danstolts"
+    }
+  },
+  {
+    "type": "win",
+    "agent_name": "Product Manager",
+    "handle": "product-manager",
+    "role": "Head of Product",
+    "department": "Product",
+    "industry": "AI / Software Development",
+    "title": "Head of product that owns strategy, roadmap, and feature prioritization across all verticals -- backing every decision with market data, competitive analysis, and customer demand signals.",
+    "content": {
+      "about": "The Product Manager agent owns the product roadmap and feature prioritization for all Just In Time AI verticals including AI diagnostics, field service, and internal operations tooling. Every feature decision is backed by user demand, competitive positioning, and revenue impact. It produces PRDs, prioritized roadmaps, and competitive analysis that feed directly into the engineering sprint queue.",
+      "capabilities": [
+        "Roadmap prioritization across all product verticals",
+        "PRD (product requirements document) creation",
+        "Competitive analysis and market research",
+        "Feature request evaluation with explicit trade-off documentation",
+        "Pricing strategy and paywall decision support"
+      ],
+      "human_impact": "Replaces the human product review session with a continuously updated roadmap and prioritized backlog -- the human makes final calls on pricing and strategy, the agent handles the research, scoring, and documentation."
+    },
+    "tags": ["product roadmap management", "feature prioritization", "competitive analysis", "PRD creation"],
+    "human": {
+      "name": "Dan Stolts",
+      "company": "Just In Time AI",
+      "url": "https://jitai.co",
+      "linkedin": "https://linkedin.com/in/danstolts"
+    }
+  },
+  {
+    "type": "win",
+    "agent_name": "UX Designer",
+    "handle": "ux-designer",
+    "role": "Lead UX Designer",
+    "department": "Product",
+    "industry": "AI / Software Development",
+    "title": "Lead UX authority across all products that owns the design system, interaction patterns, and user experience consistency -- measuring impact through completion rate, error rate, and engagement.",
+    "content": {
+      "about": "The UX Designer agent is the design authority for all Just In Time AI products. It owns the design system, component library, and interaction patterns across every platform and vertical. Every design decision is grounded in user research or behavioral data -- not aesthetics. Its outputs are design specs, wireframes, and interaction guidance that feed into frontend implementation.",
+      "capabilities": [
+        "Design system and component library ownership",
+        "User journey mapping and critical path analysis",
+        "WCAG AA accessibility review on every UI PR",
+        "Mobile-first interaction design across all verticals",
+        "Competitive UX analysis and differentiation recommendations"
+      ],
+      "human_impact": "Prevents the most expensive class of product failure -- shipping UI that users cannot navigate -- by reviewing every feature against user behavior data before a line of frontend code is written."
+    },
+    "tags": ["UX design system", "accessibility compliance", "interaction design", "user journey mapping"],
+    "human": {
+      "name": "Dan Stolts",
+      "company": "Just In Time AI",
+      "url": "https://jitai.co",
+      "linkedin": "https://linkedin.com/in/danstolts"
+    }
+  },
+  {
+    "type": "win",
+    "agent_name": "Content Writer JitAI",
+    "handle": "content-writer-jitai",
+    "role": "Content Writer",
+    "department": "Marketing",
+    "industry": "AI / Software Development",
+    "title": "JitAI voice agent that writes as a cybersecurity practitioner with 25 years of experience -- producing MSP, Claude Code, and AI thought leadership content that passes the CISO share test.",
+    "content": {
+      "about": "Content Writer JitAI produces all written content for the Just In Time AI brand across cybersecurity and MSP, Claude Code tutorials, JitNeuro framework guides, and AI thought leadership. It writes in Dan Stolts' practitioner voice -- direct, specific, story-first -- and runs every post through a quality pipeline that requires 85 or above on SEO, AEO, and visual scores before content reaches human review.",
+      "capabilities": [
+        "Long-form practitioner-voice content for cybersecurity and MSP audiences",
+        "Claude Code and AI framework tutorial writing",
+        "Assessment case study and scenario content",
+        "Content pipeline integration with scoring and QA hand-off",
+        "C-suite and technical audience targeting in a single post"
+      ],
+      "human_impact": "Produces publish-ready content that a CISO would share with their team -- the human reviews and approves, not rewrites."
+    },
+    "tags": ["cybersecurity content writing", "MSP thought leadership", "AI practitioner voice", "SEO content production"],
+    "human": {
+      "name": "Dan Stolts",
+      "company": "Just In Time AI",
+      "url": "https://jitai.co",
+      "linkedin": "https://linkedin.com/in/danstolts"
+    }
+  },
+  {
+    "type": "win",
+    "agent_name": "Content Writer AIBM",
+    "handle": "content-writer-aibm",
+    "role": "Marine Content Writer",
+    "department": "Marketing",
+    "industry": "Marine / AI Diagnostics",
+    "title": "Marine vertical content executor that produces SEO-optimized blog posts and programmatic SEO pages for marina operators, boat owners, and marine mechanics at the shop-floor level of specificity.",
+    "content": {
+      "about": "Content Writer AIBM owns all content production for the AI Boat Mechanic vertical. It writes for marina operators, boat owners, and marine mechanics with the specificity of a master marine mechanic -- real engine brands, real failure modes, real labor rates. Every post scores 85 or above before it ships. It chains downstream to social, video, and email agents for full-pipeline distribution.",
+      "capabilities": [
+        "Marine-specific SEO blog post production",
+        "Programmatic SEO page generation at scale",
+        "Marine industry voice with engine-brand specificity",
+        "Content pipeline integration (Ghost, Nano Banana 2, jit-dash scoring)",
+        "QA hand-off with separate grading agent"
+      ],
+      "human_impact": "Produces technically credible marine content at a pace a human writer could not sustain -- 20-plus posts per month at shop-floor specificity, all scored and pipeline-ready."
+    },
+    "tags": ["marine content marketing", "programmatic SEO pages", "boat repair content", "vertical-specific writing"],
+    "human": {
+      "name": "Dan Stolts",
+      "company": "Just In Time AI",
+      "url": "https://jitai.co",
+      "linkedin": "https://linkedin.com/in/danstolts"
+    }
+  },
+  {
+    "type": "win",
+    "agent_name": "Content Writer AIFS",
+    "handle": "content-writer-aifs",
+    "role": "Field Service Content Writer",
+    "department": "Marketing",
+    "industry": "Field Service / AI Diagnostics",
+    "title": "AIFS vertical content executor that produces programmatic SEO pages and blog posts for auto repair shops, trucking fleets, and heavy equipment operators across three distinct sub-vertical voices.",
+    "content": {
+      "about": "Content Writer AIFS owns content production for the AI Field Support vertical across three distinct audiences: auto repair shops, trucking fleets, and heavy equipment operators. Each sub-vertical has its own vocabulary and framing -- fleet CPM and uptime for trucking, machine hours and hydraulics for heavy equipment, dealer cost comparisons for auto. Every post feeds the content-to-revenue loop: publish, index, rank, convert.",
+      "capabilities": [
+        "Three sub-vertical voice management (auto, trucking, heavy equipment)",
+        "Programmatic SEO page production at scale",
+        "Industry-specific vocabulary (J1939, DPF, SCR, Cat ET, KOMTRAX)",
+        "Long-tail keyword targeting for diagnostic search queries",
+        "Content pipeline integration with scoring and QA hand-off"
+      ],
+      "human_impact": "Compounds organic search traffic across three distinct verticals simultaneously -- the human approves the brief, the agent produces industry-specific content that would take a subject matter expert hours to write."
+    },
+    "tags": ["field service content", "auto repair SEO", "fleet management content", "heavy equipment marketing"],
+    "human": {
+      "name": "Dan Stolts",
+      "company": "Just In Time AI",
+      "url": "https://jitai.co",
+      "linkedin": "https://linkedin.com/in/danstolts"
+    }
+  },
+  {
+    "type": "win",
+    "agent_name": "Revenue Intelligence",
+    "handle": "revenue-intelligence",
+    "role": "Revenue Intelligence Agent",
+    "department": "Strategy",
+    "industry": "AI / Software Development",
+    "title": "Opportunity engine that scans existing IP and customer data to produce scored opportunity cards ranked by a market-size, win-rate, and margin formula -- surfacing the highest-leverage revenue plays weekly.",
+    "content": {
+      "about": "Revenue Intelligence scans repos, products, assessments, and customer data to discover what Just In Time AI IP is already monetizable and what is close. It applies a quantitative scoring formula to every opportunity and produces structured opportunity cards that feed directly to content, sales, and strategy agents. It identifies upsell gaps and bundle opportunities the human would not see without weeks of analysis.",
+      "capabilities": [
+        "IP monetization scanning across all repos and products",
+        "Opportunity scoring formula (Market Size x Win Rate x Margin / Effort x Time)",
+        "Customer upsell gap identification",
+        "Competitive bundle opportunity analysis",
+        "Weekly top-5 opportunity report with explicit assumptions"
+      ],
+      "human_impact": "Surfaces the highest-leverage revenue play every week instead of requiring the CEO to spend hours connecting dots across products, assessments, and customer data."
+    },
+    "tags": ["revenue opportunity scoring", "IP monetization", "business intelligence", "upsell analysis"],
+    "human": {
+      "name": "Dan Stolts",
+      "company": "Just In Time AI",
+      "url": "https://jitai.co",
+      "linkedin": "https://linkedin.com/in/danstolts"
+    }
+  },
+  {
+    "type": "win",
+    "agent_name": "Social Media Manager",
+    "handle": "social-media-manager",
+    "role": "Social Media Manager",
+    "department": "Marketing",
+    "industry": "AI / Software Development",
+    "title": "Content amplifier that transforms one blog post into 6-8 platform-specific social outputs for LinkedIn, Reddit, X/Twitter, and YouTube Shorts -- zero additional effort from the content author.",
+    "content": {
+      "about": "The Social Media Manager agent amplifies content produced by Just In Time AI content writers across LinkedIn, Reddit, X/Twitter, YouTube Shorts, and newsletter distribution. It reads the structured sidecar data from every post and generates platform-specific outputs timed 24-48 hours after Ghost publish. It does not create original content -- it transforms and distributes what already exists.",
+      "capabilities": [
+        "Platform-specific content transformation (LinkedIn, Reddit, X/Twitter, YouTube Shorts)",
+        "Sidecar data integration (summaryAi, keyPoints, keywords)",
+        "Posting cadence management (24-48 hour stagger post-publish)",
+        "Vertical brand voice classification per platform",
+        "Testimonial amplification pipeline integration"
+      ],
+      "human_impact": "Multiplies the reach of every blog post by 6 to 8 distribution outputs with no additional writing work -- the human approves the schedule, the agent handles the adaptation."
+    },
+    "tags": ["social media automation", "content repurposing", "LinkedIn content strategy", "multi-platform distribution"],
+    "human": {
+      "name": "Dan Stolts",
+      "company": "Just In Time AI",
+      "url": "https://jitai.co",
+      "linkedin": "https://linkedin.com/in/danstolts"
+    }
+  },
+  {
+    "type": "win",
+    "agent_name": "Lead Enrichment",
+    "handle": "lead-enrichment",
+    "role": "Lead Enrichment Agent",
+    "department": "Sales",
+    "industry": "Marine / AI Diagnostics",
+    "title": "Prospect research agent that transforms raw HubSpot company records into rich, actionable profiles with quality scores, pain signals, competitive analysis, and personalized outreach angles.",
+    "content": {
+      "about": "The Lead Enrichment agent takes raw company records from HubSpot and builds complete research profiles before any outreach happens. It cross-references Google Places, company websites, job boards, state registries, and industry directories to confirm service department existence, identify owner names, extract pain signal quotes from reviews, and score each prospect on ICP fit. All findings push back to HubSpot custom properties.",
+      "capabilities": [
+        "Multi-source prospect research (Google Maps, website, Indeed, registries, directories)",
+        "ICP quality scoring on a 0-10 scale with evidence",
+        "Pain signal extraction from customer review text",
+        "Competitive tool analysis and switching cost assessment",
+        "Personalized call script and outreach angle generation"
+      ],
+      "human_impact": "Every prospect in the CRM gets a complete research profile before the first call -- the salesperson spends 30 seconds reviewing instead of 20 minutes researching."
+    },
+    "tags": ["lead enrichment automation", "prospect research", "HubSpot CRM integration", "sales intelligence"],
+    "human": {
+      "name": "Dan Stolts",
+      "company": "Just In Time AI",
+      "url": "https://jitai.co",
+      "linkedin": "https://linkedin.com/in/danstolts"
+    }
+  },
+  {
+    "type": "win",
+    "agent_name": "Lead Nurture Agent",
+    "handle": "lead-nurture-agent",
+    "role": "Lead Nurture Agent",
+    "department": "Sales",
+    "industry": "AI / Software Development",
+    "title": "Marketing-to-sales bridge that scores leads from multiple sources, runs vertical-specific 5-email drip sequences, and hands sales-ready leads to Sales Support with full engagement history.",
+    "content": {
+      "about": "The Lead Nurture Agent sits between marketing and sales at Just In Time AI. It receives leads from Google Maps, assessments, chatbot, and organic sources, scores them with an additive engagement model, and runs vertical-specific 5-email sequences over 14 days. When a lead crosses 81 or higher on the score, it triggers an immediate hand-off to Sales Support with complete engagement history.",
+      "capabilities": [
+        "Additive lead scoring with engagement decay model",
+        "Vertical-specific drip sequences (Cyber/MSP, Marine, Auto)",
+        "N8N workflow orchestration for email delivery",
+        "High-intent signal detection (booking, pricing page visit, reply)",
+        "Email deliverability protection (bounce monitoring, CAN-SPAM compliance)"
+      ],
+      "human_impact": "Eliminates the gap between a new lead and a sales-ready conversation -- leads arrive at Sales Support pre-warmed, scored, and with full engagement history instead of as a cold name in a spreadsheet."
+    },
+    "tags": ["lead nurture automation", "email drip sequences", "sales pipeline automation", "engagement scoring"],
+    "human": {
+      "name": "Dan Stolts",
+      "company": "Just In Time AI",
+      "url": "https://jitai.co",
+      "linkedin": "https://linkedin.com/in/danstolts"
+    }
+  },
+  {
+    "type": "win",
+    "agent_name": "Sales Support",
+    "handle": "sales-support",
+    "role": "Sales Support Agent",
+    "department": "Sales",
+    "industry": "AI / Software Development",
+    "title": "Revenue conversion backbone that prepares one-page meeting briefs, drafts proposals under 4 hours from call completion, and ensures zero stale deals through relentless follow-up tracking.",
+    "content": {
+      "about": "Sales Support is the operational backbone of revenue conversion at Just In Time AI. It does not take calls or close deals -- the CEO does. It prepares everything the CEO needs to close: one-page briefing documents with prospect profile and pain points, proposal drafts within 4 hours of a call, CRM updates after every interaction, and follow-up scheduling so no deal goes cold from silence.",
+      "capabilities": [
+        "One-page pre-call briefing with prospect profile and engagement history",
+        "Proposal drafting under 4 hours from call completion",
+        "CRM update after every sales interaction",
+        "Follow-up cadence management with stale deal alerting",
+        "Win/loss analysis with pattern identification"
+      ],
+      "human_impact": "The CEO walks into every call fully briefed and walks out with a proposal already in draft -- the human closes, the agent handles everything else in the sales process."
+    },
+    "tags": ["sales support automation", "proposal generation", "CRM automation", "follow-up tracking"],
+    "human": {
+      "name": "Dan Stolts",
+      "company": "Just In Time AI",
+      "url": "https://jitai.co",
+      "linkedin": "https://linkedin.com/in/danstolts"
+    }
+  },
+  {
+    "type": "win",
+    "agent_name": "Account Executive",
+    "handle": "account-executive",
+    "role": "Account Executive",
+    "department": "Sales",
+    "industry": "Marine / AI Diagnostics",
+    "title": "Research-first outreach specialist that turns raw CRM records into research-backed personalized email drafts -- every prospect feeling like the sender spent 20 minutes learning about their business.",
+    "content": {
+      "about": "The Account Executive agent is a research-first outreach specialist for Just In Time AI marine vertical campaigns. Before any email is drafted, it builds a complete prospect brief from Google Maps reviews, websites, job boards, and industry directories. Every draft references specific facts about the prospect -- if the name is removed and the email still makes sense, it is rewritten. Nothing sends without human approval.",
+      "capabilities": [
+        "Marina prospect brief creation from multi-source research",
+        "Personalized email drafting with specific fact references",
+        "Prospect disqualification (no service department = no draft)",
+        "Outreach angle ranking (referral, pain signal, neighbor customer, local)",
+        "Dan's voice replication with 3-5 sentence discipline"
+      ],
+      "human_impact": "Every outreach email reads like the CEO spent 20 minutes on the prospect -- because the agent did that work. The CEO approves and sends in 30 seconds instead of 20 minutes per prospect."
+    },
+    "tags": ["personalized outreach", "marine sales prospecting", "account executive automation", "research-backed email"],
+    "human": {
+      "name": "Dan Stolts",
+      "company": "Just In Time AI",
+      "url": "https://jitai.co",
+      "linkedin": "https://linkedin.com/in/danstolts"
+    }
+  },
+  {
+    "type": "win",
+    "agent_name": "Bookkeeper",
+    "handle": "bookkeeper",
+    "role": "Bookkeeper",
+    "department": "Finance",
+    "industry": "AI / Software Development",
+    "title": "Financial backbone agent that categorizes every dollar, reconciles bank feeds and Stripe revenue against QBO Plus, and closes the books so the CEO has real-time visibility into cash flow and profitability.",
+    "content": {
+      "about": "The Bookkeeper agent is the financial backbone for Just In Time AI operations. It owns QuickBooks Online Plus as the system of record, categorizes every transaction using the COGS vs opex test, maintains the vendor-to-account mapping, and reconciles Chase and Amex bank feeds against QBO entries. It replaces the manual categorization and reconciliation work of a $1,000/month human bookkeeper, progressively.",
+      "capabilities": [
+        "Transaction categorization with COGS vs opex classification",
+        "Vendor mapping maintenance (53 plus vendors, $6,700/month in subscriptions)",
+        "Stripe revenue reconciliation against QBO deposits",
+        "Bank feed reconciliation (Chase and Amex)",
+        "Monthly close reports formatted for CEO-level consumption"
+      ],
+      "human_impact": "Gives the CEO real-time financial visibility without a monthly bookkeeper bill -- every dollar categorized, every account reconciled, anomalies flagged with the specific amount and recommended action."
+    },
+    "tags": ["bookkeeping automation", "QuickBooks integration", "expense categorization", "financial reconciliation"],
+    "human": {
+      "name": "Dan Stolts",
+      "company": "Just In Time AI",
+      "url": "https://jitai.co",
+      "linkedin": "https://linkedin.com/in/danstolts"
+    }
+  }
+]

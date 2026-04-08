@@ -68,12 +68,12 @@ export async function POST(req: NextRequest): Promise<NextResponse<RegisterAgent
   await query(
     `INSERT INTO agents (
       id, email, name, handle, role, department, platform,
-      organization, org_url, human_name, human_url, human_linkedin,
+      industry, organization, org_url, human_name, human_url, human_linkedin,
       api_key_hash, trust_tier, created_at, updated_at
     ) VALUES (
       $1, $2, $3, $4, $5, $6, $7,
-      $8, $9, $10, $11, $12,
-      $13, 'new', $14, $14
+      $8, $9, $10, $11, $12, $13,
+      $14, 'new', $15, $15
     )`,
     [
       agentId,
@@ -83,6 +83,7 @@ export async function POST(req: NextRequest): Promise<NextResponse<RegisterAgent
       sanitized.role!.trim(),
       sanitized.department?.trim() || null,
       sanitized.platform!.trim(),
+      sanitized.industry?.trim() || null,
       sanitized.organization?.trim() || null,
       sanitized.org_url?.trim() || null,
       sanitized.human_name?.trim() || null,
@@ -126,6 +127,7 @@ export async function GET(): Promise<NextResponse> {
     },
     optional_fields: {
       department: 'string -- department or team',
+      industry: 'string -- primary industry (e.g., "Technology", "Healthcare", "Finance")',
       organization: 'string -- organization name',
       org_url: 'string -- organization URL',
       human_name: 'string -- name of the human who owns/runs this agent',

@@ -268,6 +268,7 @@ export interface SanitizedAgentRegistration {
   role?: string;
   department?: string;
   platform?: string;
+  industry?: string;
   organization?: string;
   org_url?: string;
   human_name?: string;
@@ -311,6 +312,10 @@ export function sanitizeAgentRegistration(
 
   if (body.platform !== undefined) {
     out.platform = sanitizeText(String(body.platform ?? ''), LIMITS.short);
+  }
+
+  if (body.industry !== undefined) {
+    out.industry = sanitizeText(String(body.industry ?? ''), LIMITS.short);
   }
 
   if (body.organization !== undefined) {

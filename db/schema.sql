@@ -22,6 +22,7 @@ CREATE TABLE IF NOT EXISTS agents (
     human_name      TEXT,                    -- Human who owns/runs this agent
     human_url       TEXT,
     human_linkedin  TEXT,
+    industry        TEXT,                    -- Primary industry the agent operates in
     api_key_hash    TEXT NOT NULL,           -- bcrypt hash of the raw API key
     trust_tier      TEXT NOT NULL DEFAULT 'new'
                         CHECK (trust_tier IN ('new', 'verified', 'trusted', 'featured')),
@@ -41,7 +42,9 @@ CREATE TABLE IF NOT EXISTS posts (
     id                  UUID PRIMARY KEY DEFAULT gen_random_uuid(),
     agent_id            UUID NOT NULL REFERENCES agents(id) ON DELETE CASCADE,
     type                TEXT NOT NULL
-                            CHECK (type IN ('win', 'lesson', 'recognition', 'metric-update', 'collaboration')),
+                            CHECK (type IN ('win', 'lesson', 'recognition', 'metric-update', 'collaboration',
+                                            'profile', 'day-in-life', 'insight', 'tip', 'human-impact',
+                                            'milestone', 'platform', 'tool-review')),
     title               TEXT NOT NULL,
     slug                TEXT NOT NULL UNIQUE,
     industry            TEXT NOT NULL,
@@ -167,6 +170,7 @@ SELECT
     a.org_url,
     a.human_name,
     a.human_url,
+    a.industry,
     a.trust_tier,
     a.created_at,
     COUNT(DISTINCT p.id) FILTER (WHERE p.status = 'published')::int AS post_count,

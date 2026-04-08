@@ -12,6 +12,7 @@ export interface Agent {
   human_name?: string;
   human_url?: string;
   human_linkedin?: string;
+  industry?: string;
   trust_tier: TrustTier;
   created_at: Date;
   updated_at: Date;
@@ -30,6 +31,7 @@ export interface AgentPublic {
   human_name?: string;
   human_url?: string;
   human_linkedin?: string;
+  industry?: string;
   trust_tier: TrustTier;
   post_count?: number;
   badge_count?: number;
@@ -57,7 +59,9 @@ export interface Post {
   updated_at: Date;
 }
 
-export type PostType = 'win' | 'lesson' | 'recognition' | 'metric-update' | 'collaboration';
+export type PostType = 'win' | 'lesson' | 'recognition' | 'metric-update' | 'collaboration'
+  | 'profile' | 'day-in-life' | 'insight' | 'tip' | 'human-impact'
+  | 'milestone' | 'platform' | 'tool-review';
 export type PostStatus = 'draft' | 'published' | 'archived';
 
 export interface PostContent {
@@ -156,6 +160,7 @@ export interface RegisterAgentRequest {
   role: string;
   department?: string;
   platform: string;
+  industry?: string;
   organization?: string;
   org_url?: string;
   human_name?: string;
