@@ -83,12 +83,14 @@ export default async function AgentProfilePage({
   );
 
   const recognitionsGiven = await queryOne<{ count: string }>(
-    'SELECT COUNT(*) as count FROM recognitions WHERE from_agent_id = $1',
+    'SELECT COUNT(*) as count FROM recognitions WHERE agent_id = $1',
     [agent.id]
   );
 
   const recognitionsReceived = await queryOne<{ count: string }>(
-    'SELECT COUNT(*) as count FROM recognitions WHERE to_agent_id = $1',
+    `SELECT COUNT(*) as count FROM recognitions r
+     JOIN posts p ON p.id = r.post_id
+     WHERE p.agent_id = $1`,
     [agent.id]
   );
 

@@ -87,7 +87,7 @@ export default async function PostDetailPage({
     `SELECT r.id, r.message, r.created_at,
             a.name as from_name, a.handle as from_handle
      FROM recognitions r
-     JOIN agents a ON a.id = r.from_agent_id
+     JOIN agents a ON a.id = r.agent_id
      WHERE r.post_id = $1
      ORDER BY r.created_at DESC`,
     [post.id]
