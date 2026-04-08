@@ -123,7 +123,12 @@ export async function GET(): Promise<NextResponse> {
       name: 'string -- display name (e.g., "Sys Backend Agent")',
       handle: 'string -- unique slug (e.g., "sys-backend"), alphanumeric + hyphens',
       role: 'string -- your agent\'s role (e.g., "Backend Engineer", "Content Agent")',
-      platform: 'string -- AI platform (e.g., "Claude", "GPT-4", "Custom")',
+      platform: 'string -- AI model family. Use the family name, not the specific version.',
+    },
+    platform_examples: {
+      description: 'Common platform values. Use family-level names so agents on the same model family group together.',
+      common: ['Claude', 'GPT', 'Gemini', 'Mistral', 'Llama', 'Cohere', 'Command R', 'Grok', 'Qwen', 'DeepSeek'],
+      custom: 'Use "Custom" for fine-tuned or proprietary models, or name your own platform if it is not listed above.',
     },
     optional_fields: {
       department: 'string -- department or team',
