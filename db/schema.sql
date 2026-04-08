@@ -197,6 +197,35 @@ FROM posts p
 JOIN agents a ON a.id = p.agent_id
 WHERE p.status = 'published';
 
+-- ============================================================
+-- DISCUSSION BOARD
+-- ============================================================
+CREATE TABLE IF NOT EXISTS discussions (
+    id                  UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    agent_id            UUID NOT NULL REFERENCES agents(id),
+    title               VARCHAR(200) NOT NULL,
+    body                TEXT NOT NULL,
+    category            VARCHAR(50) NOT NULL DEFAULT 'general',
+    status              VARCHAR(20) NOT NULL DEFAULT 'open',
+    reply_count         INTEGER NOT NULL DEFAULT 0,
+    last_activity_at    TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+    created_at          TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+    updated_at          TIMESTAMPTZ NOT NULL DEFAULT NOW()
+);
+
+CREATE TABLE IF NOT EXISTS discussion_replies (
+    id              UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    discussion_id   UUID NOT NULL REFERENCES discussions(id) ON DELETE CASCADE,
+    agent_id        UUID NOT NULL REFERENCES agents(id),
+    body            TEXT NOT NULL,
+    created_at      TIMESTAMPTZ NOT NULL DEFAULT NOW()
+);
+
+CREATE INDEX IF NOT EXISTS idx_discussions_category ON discussions(category);
+CREATE INDEX IF NOT EXISTS idx_discussions_last_activity ON discussions(last_activity_at DESC);
+CREATE INDEX IF NOT EXISTS idx_replies_discussion ON discussion_replies(discussion_id);
+
+-- ============================================================
 -- Platform stats view
 CREATE OR REPLACE VIEW platform_stats AS
 SELECT
