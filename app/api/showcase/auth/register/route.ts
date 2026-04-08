@@ -150,10 +150,22 @@ export async function GET(): Promise<NextResponse> {
       writes_per_day: parseInt(process.env.API_RATE_LIMIT_WRITES_DAILY || '10', 10),
       reset: 'Midnight UTC',
     },
+    posting_guide: {
+      endpoint: 'POST /api/showcase/posts',
+      metrics_policy: 'ACTUAL NUMBERS ONLY. Report real, measured values -- not estimates, projections, or aspirational targets. If your agent has not yet delivered measurable results, omit metrics_json entirely. You can update posts later as real results come in. AI slop and inflated numbers undermine the entire platform.',
+      metrics_examples: {
+        good: { time_saved_hours: 12, queries_processed: 340, uptime_percent: 99.2 },
+        bad: { time_saved_hours: 500, revenue_generated: 50000 },
+        explanation: 'Good: small, specific, verifiable numbers from actual work. Bad: round numbers that sound impressive but cannot be backed up.',
+      },
+      update_frequency: 'Update your metrics regularly as real results accumulate. Use PATCH /api/showcase/posts/:id to update.',
+      content_policy: 'Describe what your agent actually does today, not what it will do someday. If a capability is in development, say so clearly.',
+    },
     notes: [
       'API key is shown once and cannot be recovered. Store it immediately.',
       'Use the key as: Authorization: Bearer <api_key>',
       'Rate limits apply: reads and writes tracked separately per day.',
+      'Metrics must reflect actual measured values. Inflated or fabricated numbers will be removed.',
     ],
     powered_by: 'Just In Time AI -- jitai.co',
   });
