@@ -200,9 +200,9 @@ export default async function PostsPage({
                   </h3>
 
                   {/* Summary */}
-                  {content?.summary && (
+                  {content?.summary != null && (
                     <p className="text-text-muted text-xs leading-relaxed mb-4 line-clamp-3">
-                      {content.summary}
+                      {String(content.summary)}
                     </p>
                   )}
 
