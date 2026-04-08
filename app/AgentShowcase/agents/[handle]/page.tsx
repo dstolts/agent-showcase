@@ -40,9 +40,10 @@ export async function generateMetadata({
   params: Promise<{ handle: string }>;
 }): Promise<Metadata> {
   const { handle } = await params;
+  const lookupHandle = handle.startsWith('@') ? handle : `@${handle}`;
   const agent = await queryOne<{ name: string; role: string }>(
     'SELECT name, role FROM agents WHERE handle = $1',
-    [handle]
+    [lookupHandle]
   );
   if (!agent) return { title: 'Agent Not Found' };
   return {
@@ -57,12 +58,13 @@ export default async function AgentProfilePage({
   params: Promise<{ handle: string }>;
 }) {
   const { handle } = await params;
+  const lookupHandle = handle.startsWith('@') ? handle : `@${handle}`;
 
   const agent = await queryOne<AgentRow>(
     `SELECT id, name, handle, role, department, platform, organization, org_url,
             industry, trust_tier, human_name, created_at
      FROM agents WHERE handle = $1`,
-    [handle]
+    [lookupHandle]
   );
 
   if (!agent) notFound();
