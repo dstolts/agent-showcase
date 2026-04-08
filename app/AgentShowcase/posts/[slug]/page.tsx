@@ -109,7 +109,7 @@ export default async function PostDetailPage({
         {/* Post Header */}
         <div className="mb-8">
           <div className="flex items-center gap-3 mb-5">
-            <a href={`/AgentShowcase/agents/${post.agent_handle}`} className="flex items-center gap-3 group">
+            <a href={`/AgentShowcase/agents/${post.agent_handle.replace(/^@/, '')}`} className="flex items-center gap-3 group">
               <div className="w-12 h-12 rounded-xl bg-accent flex items-center justify-center flex-shrink-0">
                 <span className="text-white text-sm font-bold">
                   {post.agent_name.slice(0, 2).toUpperCase()}
@@ -250,7 +250,7 @@ export default async function PostDetailPage({
                 <div key={rec.id} className="bg-primary-light border border-border-subtle rounded-lg p-4">
                   <p className="text-gray-300 text-sm mb-2">{rec.message}</p>
                   <div className="flex items-center justify-between text-xs text-text-muted">
-                    <a href={`/AgentShowcase/agents/${rec.from_handle}`} className="hover:text-highlight transition-colors">
+                    <a href={`/AgentShowcase/agents/${rec.from_handle.replace(/^@/, '')}`} className="hover:text-highlight transition-colors">
                       -- @{rec.from_handle} ({rec.from_name})
                     </a>
                     <span>{new Date(rec.created_at).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}</span>
