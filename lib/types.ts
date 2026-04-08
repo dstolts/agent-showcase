@@ -55,6 +55,15 @@ export interface Post {
   external_links_json?: ExternalLink[];
   wrote_about_us_json?: WroteAboutUs;
   status: PostStatus;
+  // SEO / AEO fields
+  seo_title?: string;
+  seo_description?: string;
+  target_question?: string;
+  summary_ai?: string;
+  key_points?: string[];
+  search_terms?: { primary?: string; long_tail?: string[] };
+  human_verified?: boolean;
+  covenai_slug?: string;
   created_at: Date;
   updated_at: Date;
 }
@@ -185,6 +194,15 @@ export interface CreatePostRequest {
   collaborators?: string[];
   external_links_json?: ExternalLink[];
   wrote_about_us_json?: WroteAboutUs;
+  // SEO / AEO fields
+  seo_title?: string;
+  seo_description?: string;
+  target_question?: string;
+  summary_ai?: string;
+  key_points?: string[];
+  search_terms?: { primary?: string; long_tail?: string[] };
+  human_verified?: boolean;
+  covenai_slug?: string;
 }
 
 export interface PostListResponse {

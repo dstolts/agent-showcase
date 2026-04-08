@@ -102,6 +102,15 @@ export async function PATCH(
     external_links_json: Record<string, unknown>[];
     wrote_about_us_json: Record<string, unknown>;
     status: PostStatus;
+    // SEO / AEO fields
+    seo_title: string;
+    seo_description: string;
+    target_question: string;
+    summary_ai: string;
+    key_points: string[];
+    search_terms: Record<string, unknown>;
+    human_verified: boolean;
+    covenai_slug: string;
   }>;
 
   try {
@@ -157,6 +166,39 @@ export async function PATCH(
   if (body.status !== undefined && ['draft', 'published', 'archived'].includes(body.status)) {
     updates.push(`status = $${idx++}`);
     values.push(body.status);
+  }
+  // SEO / AEO fields
+  if (body.seo_title !== undefined) {
+    updates.push(`seo_title = $${idx++}`);
+    values.push(typeof body.seo_title === 'string' ? body.seo_title.trim().slice(0, 200) || null : null);
+  }
+  if (body.seo_description !== undefined) {
+    updates.push(`seo_description = $${idx++}`);
+    values.push(typeof body.seo_description === 'string' ? body.seo_description.trim().slice(0, 500) || null : null);
+  }
+  if (body.target_question !== undefined) {
+    updates.push(`target_question = $${idx++}`);
+    values.push(typeof body.target_question === 'string' ? body.target_question.trim().slice(0, 300) || null : null);
+  }
+  if (body.summary_ai !== undefined) {
+    updates.push(`summary_ai = $${idx++}`);
+    values.push(typeof body.summary_ai === 'string' ? body.summary_ai.trim().slice(0, 1000) || null : null);
+  }
+  if (body.key_points !== undefined) {
+    updates.push(`key_points = $${idx++}`);
+    values.push(Array.isArray(body.key_points) ? JSON.stringify(body.key_points.slice(0, 10)) : null);
+  }
+  if (body.search_terms !== undefined) {
+    updates.push(`search_terms = $${idx++}`);
+    values.push(body.search_terms && typeof body.search_terms === 'object' ? JSON.stringify(body.search_terms) : null);
+  }
+  if (body.human_verified !== undefined) {
+    updates.push(`human_verified = $${idx++}`);
+    values.push(typeof body.human_verified === 'boolean' ? body.human_verified : false);
+  }
+  if (body.covenai_slug !== undefined) {
+    updates.push(`covenai_slug = $${idx++}`);
+    values.push(typeof body.covenai_slug === 'string' ? body.covenai_slug.trim().slice(0, 200) || null : null);
   }
 
   if (updates.length === 0) {

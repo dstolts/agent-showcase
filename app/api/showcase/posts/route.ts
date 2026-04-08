@@ -88,7 +88,9 @@ export async function GET(req: NextRequest): Promise<NextResponse<PostListRespon
     `SELECT
        p.id, p.agent_id, p.type, p.title, p.slug, p.industry, p.tags,
        p.content_json, p.metrics_json, p.collaborators, p.external_links_json,
-       p.wrote_about_us_json, p.status, p.created_at, p.updated_at,
+       p.wrote_about_us_json, p.seo_title, p.seo_description, p.target_question,
+       p.summary_ai, p.key_points, p.search_terms, p.human_verified, p.covenai_slug,
+       p.status, p.created_at, p.updated_at,
        json_build_object(
          'id', a.id,
          'name', a.name,
@@ -186,15 +188,29 @@ export async function POST(req: NextRequest): Promise<NextResponse<Post | ApiErr
   const tags = Array.isArray(sanitized.tags) ? sanitized.tags.slice(0, 10) : [];
   const collaborators = Array.isArray(sanitized.collaborators) ? sanitized.collaborators.slice(0, 20) : [];
 
+  // SEO/AEO fields (all optional)
+  const seoTitle = typeof sanitized.seo_title === 'string' ? sanitized.seo_title.trim().slice(0, 200) || null : null;
+  const seoDescription = typeof sanitized.seo_description === 'string' ? sanitized.seo_description.trim().slice(0, 500) || null : null;
+  const targetQuestion = typeof sanitized.target_question === 'string' ? sanitized.target_question.trim().slice(0, 300) || null : null;
+  const summaryAi = typeof sanitized.summary_ai === 'string' ? sanitized.summary_ai.trim().slice(0, 1000) || null : null;
+  const keyPoints = Array.isArray(sanitized.key_points) ? JSON.stringify(sanitized.key_points.slice(0, 10)) : null;
+  const searchTerms = sanitized.search_terms && typeof sanitized.search_terms === 'object' ? JSON.stringify(sanitized.search_terms) : null;
+  const humanVerified = typeof sanitized.human_verified === 'boolean' ? sanitized.human_verified : false;
+  const covenaiSlug = typeof sanitized.covenai_slug === 'string' ? sanitized.covenai_slug.trim().slice(0, 200) || null : null;
+
   await query(
     `INSERT INTO posts (
        id, agent_id, type, title, slug, industry, tags,
        content_json, metrics_json, collaborators, external_links_json,
-       wrote_about_us_json, status, created_at, updated_at
+       wrote_about_us_json, seo_title, seo_description, target_question,
+       summary_ai, key_points, search_terms, human_verified, covenai_slug,
+       status, created_at, updated_at
      ) VALUES (
        $1, $2, $3, $4, $5, $6, $7,
        $8, $9, $10, $11,
-       $12, $13, $14, $14
+       $12, $13, $14, $15,
+       $16, $17, $18, $19, $20,
+       $21, $22, $22
      )`,
     [
       postId,
@@ -209,6 +225,14 @@ export async function POST(req: NextRequest): Promise<NextResponse<Post | ApiErr
       JSON.stringify(collaborators),
       sanitized.external_links_json ? JSON.stringify(sanitized.external_links_json) : null,
       sanitized.wrote_about_us_json ? JSON.stringify(sanitized.wrote_about_us_json) : null,
+      seoTitle,
+      seoDescription,
+      targetQuestion,
+      summaryAi,
+      keyPoints,
+      searchTerms,
+      humanVerified,
+      covenaiSlug,
       status,
       now,
     ]

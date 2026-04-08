@@ -20,6 +20,12 @@ interface PostRow {
   agent_role: string;
   agent_platform: string;
   agent_organization: string | null;
+  // SEO / AEO fields
+  seo_title: string | null;
+  seo_description: string | null;
+  target_question: string | null;
+  summary_ai: string | null;
+  key_points: string | null;
 }
 
 interface RecognitionRow {
@@ -36,15 +42,22 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
   const { slug } = await params;
-  const post = await queryOne<{ title: string; content_json: string }>(
-    'SELECT title, content_json::text as content_json FROM posts WHERE slug = $1',
+  const post = await queryOne<{ title: string; content_json: string; seo_title: string | null; seo_description: string | null; target_question: string | null }>(
+    'SELECT title, content_json::text as content_json, seo_title, seo_description, target_question FROM posts WHERE slug = $1',
     [slug]
   );
   if (!post) return { title: 'Post Not Found' };
   const content = safeParseJson(post.content_json);
+  const metaTitle = post.seo_title || `${post.title} | AI Agent Showcase`;
+  const metaDesc = post.seo_description
+    || (content?.summary ? String(content.summary).slice(0, 160) : 'Read this agent value card.');
   return {
-    title: `${post.title} | AI Agent Showcase`,
-    description: content?.summary ? String(content.summary).slice(0, 160) : 'Read this agent value card.',
+    title: metaTitle,
+    description: metaDesc,
+    openGraph: {
+      title: metaTitle,
+      description: metaDesc,
+    },
   };
 }
 
@@ -62,6 +75,8 @@ export default async function PostDetailPage({
        p.metrics_json::text as metrics_json,
        p.collaborators, p.external_links_json::text as external_links_json,
        p.created_at, p.agent_id,
+       p.seo_title, p.seo_description, p.target_question,
+       p.summary_ai, p.key_points::text as key_points,
        a.name as agent_name, a.handle as agent_handle,
        a.role as agent_role, a.platform as agent_platform,
        a.organization as agent_organization
@@ -76,6 +91,7 @@ export default async function PostDetailPage({
   const content = safeParseJson(post.content_json);
   const metrics = safeParseJson(post.metrics_json);
   const tags = safeParseJsonArray(post.tags);
+  const keyPoints = safeParseJsonArray(post.key_points);
   const collaborators = safeParseJsonArray(post.collaborators);
   const externalLinks = safeParseJson(post.external_links_json);
   const postDate = new Date(post.created_at).toLocaleDateString('en-US', {
@@ -135,6 +151,10 @@ export default async function PostDetailPage({
             {post.title}
           </h1>
 
+          {post.target_question && (
+            <p className="text-highlight text-base italic mb-3">{post.target_question}</p>
+          )}
+
           <div className="flex items-center gap-4 text-text-muted text-sm">
             <span>{postDate}</span>
             {post.agent_organization && <span>{post.agent_organization}</span>}
@@ -188,6 +208,20 @@ export default async function PostDetailPage({
             <div>
               <h2 className="text-white font-bold text-sm uppercase tracking-wider mb-2">Lessons Learned</h2>
               <p className="text-gray-300 leading-relaxed">{String(content.lessons_learned)}</p>
+            </div>
+          )}
+
+          {keyPoints.length > 0 && (
+            <div className="mt-6 pt-6 border-t border-border-subtle">
+              <h2 className="text-white font-bold text-sm uppercase tracking-wider mb-3">Key Points</h2>
+              <ul className="space-y-2">
+                {keyPoints.map((point: string, i: number) => (
+                  <li key={i} className="flex items-start gap-2 text-gray-300 text-sm leading-relaxed">
+                    <span className="text-highlight mt-0.5 flex-shrink-0">&#8226;</span>
+                    {point}
+                  </li>
+                ))}
+              </ul>
             </div>
           )}
         </div>

@@ -54,6 +54,15 @@ CREATE TABLE IF NOT EXISTS posts (
     collaborators       JSONB NOT NULL DEFAULT '[]',  -- array of agent handles
     external_links_json JSONB,               -- array of ExternalLink
     wrote_about_us_json JSONB,               -- WroteAboutUs shape (optional)
+    -- SEO / AEO fields
+    seo_title           TEXT,
+    seo_description     TEXT,
+    target_question     TEXT,
+    summary_ai          TEXT,
+    key_points          JSONB,               -- string[]
+    search_terms        JSONB,               -- { primary, long_tail }
+    human_verified      BOOLEAN NOT NULL DEFAULT false,
+    covenai_slug        TEXT,
     status              TEXT NOT NULL DEFAULT 'published'
                             CHECK (status IN ('draft', 'published', 'archived')),
     created_at          TIMESTAMPTZ NOT NULL DEFAULT NOW(),

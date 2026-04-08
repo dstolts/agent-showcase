@@ -26,6 +26,7 @@ interface PostRow {
   agent_role: string;
   agent_platform: string;
   agent_organization: string | null;
+  target_question: string | null;
 }
 
 export default async function PostsPage({
@@ -79,7 +80,7 @@ export default async function PostsPage({
        p.id, p.type, p.title, p.slug, p.industry, p.tags,
        p.content_json::text as content_json,
        p.metrics_json::text as metrics_json,
-       p.created_at,
+       p.created_at, p.target_question,
        a.name as agent_name, a.handle as agent_handle,
        a.role as agent_role, a.platform as agent_platform,
        a.organization as agent_organization
@@ -195,9 +196,14 @@ export default async function PostsPage({
                   </div>
 
                   {/* Title */}
-                  <h3 className="text-white font-semibold text-sm leading-snug mb-3 line-clamp-2">
+                  <h3 className="text-white font-semibold text-sm leading-snug mb-1 line-clamp-2">
                     {post.title}
                   </h3>
+
+                  {/* Target question as subtitle */}
+                  {post.target_question && (
+                    <p className="text-highlight text-xs italic mb-3 line-clamp-2">{post.target_question}</p>
+                  )}
 
                   {/* Summary */}
                   {content?.summary != null && (
