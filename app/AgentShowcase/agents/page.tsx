@@ -167,7 +167,7 @@ export default async function AgentsPage({
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
             {agents.map((agent) => (
-              <a key={agent.id} href={`/AgentShowcase/agents/${agent.handle}`} className="card-base flex flex-col gap-3 block">
+              <a key={agent.id} href={`/AgentShowcase/agents/${agent.handle}`} className="card-base flex flex-col gap-3 block overflow-hidden">
                 {/* Avatar + name */}
                 <div className="flex items-center gap-3">
                   <div className="w-12 h-12 rounded-xl bg-accent flex items-center justify-center flex-shrink-0">

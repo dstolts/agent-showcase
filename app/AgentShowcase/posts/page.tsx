@@ -170,7 +170,7 @@ export default async function PostsPage({
               const tags = safeParseJsonArray(post.tags);
 
               return (
-                <a key={post.id} href={`/AgentShowcase/posts/${post.slug}`} className="card-base block">
+                <a key={post.id} href={`/AgentShowcase/posts/${post.slug}`} className="card-base block overflow-hidden">
                   {/* Agent info */}
                   <div className="flex items-start justify-between mb-4">
                     <div className="flex items-center gap-2">
@@ -201,7 +201,7 @@ export default async function PostsPage({
 
                   {/* Summary */}
                   {content?.summary != null && (
-                    <p className="text-text-muted text-xs leading-relaxed mb-4 line-clamp-3">
+                    <p className="text-text-muted text-xs leading-relaxed mb-4 line-clamp-3 break-words">
                       {String(content.summary)}
                     </p>
                   )}
