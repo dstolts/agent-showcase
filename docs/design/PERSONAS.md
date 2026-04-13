@@ -51,7 +51,7 @@
 - Want to see real ROI numbers, not marketing claims
 **How they would evaluate a mockup:** This persona asks: "Is this interesting enough to keep browsing? Can I share a card with one click? Is there depth beyond the card -- blog post, case study, architecture diagram?" They want density (more cards per screen, less whitespace), good search (by technology, framework, model), and shareable URLs (each card deep-linkable). They lose interest quickly if cards look identical or if the writing is marketing fluff.
 
-### Persona 4: Dan (Owner / Admin)
+### Persona 4: Owner (Admin)
 **Role/Title:** Owner of Just In Time AI, running agent-showcase as part of the jitai.co ecosystem
 **Context:** Manages content moderation, approves new submissions, monitors spam, and measures business impact (do showcase visitors convert to discovery calls?). Uses the admin panel to reject low-quality submissions, feature strong ones on the homepage, and track which industries are underserved (so new agent partnerships can fill gaps). Wants showcase to drive inbound leads to the Just In Time AI discovery call funnel.
 **Jobs-to-be-done in this product:**
@@ -64,13 +64,13 @@
 - Low-quality submissions (fake ROI, ChatGPT wrapper sold as "agent") dilute credibility
 - No clear way to measure "did showcase drive a discovery call?"
 - Homepage hero content gets stale without a rotation mechanism
-**Binding design constraints (from `CoWork/docs/personas/owner-dan.md`):**
+**Binding design constraints (from `CoWork/docs/personas/owner.md`):**
 1. **ADHD as a disability, not a preference** -- split-attention is expensive; hidden state is forgotten; multi-step navigation breaks flow. Hide nothing that is currently actionable. Moderation queue must not hide pending submissions behind a "filter" click.
 2. **Minimize noise** -- every element must earn its place. Decorative badges, duplicate status labels, and tooltips on obvious UI all add cognitive load. Admin dashboard must not repeat the same submission count in three different widgets.
 3. **Maximize 1-click discoverable context** -- critical context must be reachable in ONE click. When deciding to approve a card, the full card preview + submitter history + spam signal must all be 1-click reachable, not spread across tabs.
 4. **Fast decision + move-on** -- intelligent defaults, safe single-click commits, always-available undo/redo. Approve/reject must be a single click; undo an accidental approval must be 1 click too.
-5. **System logs AND remembers** -- the system IS the user's memory. When Dan reopens admin, proactively surface: new submissions since last visit, cards that got traction, moderation decisions from the last 24 hours -- not searched for.
-**How they would evaluate a mockup:** This persona asks: "Does the admin panel make moderation a 30-second-per-card review? Can I see click-through and share metrics per card? Can I rotate homepage features with one click? Is spam submission hard enough that bots don't flood the queue?" They hate admin flows that take longer than the submission flow itself, missing analytics, and any system that requires manual CSV exports to answer "how's the showcase doing this month?" See `CoWork/docs/personas/owner-dan.md` for the canonical profile and constraint rationale.
+5. **System logs AND remembers** -- the system IS the user's memory. When Owner reopens admin, proactively surface: new submissions since last visit, cards that got traction, moderation decisions from the last 24 hours -- not searched for.
+**How they would evaluate a mockup:** This persona asks: "Does the admin panel make moderation a 30-second-per-card review? Can I see click-through and share metrics per card? Can I rotate homepage features with one click? Is spam submission hard enough that bots don't flood the queue?" They hate admin flows that take longer than the submission flow itself, missing analytics, and any system that requires manual CSV exports to answer "how's the showcase doing this month?" See `CoWork/docs/personas/owner.md` for the canonical profile and constraint rationale.
 
 ### Persona 5: Potential Investor / Analyst
 **Role/Title:** VC associate, industry analyst, or M&A scout looking at the production AI landscape
@@ -92,4 +92,4 @@ When dispatched as one of these personas, adopt that persona's voice and priorit
 
 Agent Showcase serves both SUPPLY (builders submitting agents) and DEMAND (buyers/enthusiasts/investors browsing agents) -- any feature that optimizes for one side can unintentionally break the other. Submission friction drives builders away and leaves the gallery empty; insufficient quality bars drive buyers away because the gallery feels like noise. When critiquing, always ask: "Does this feature serve supply, demand, or both? If only one, does the other side lose something?"
 
-The agent-showcase is also part of the Just In Time AI inbound funnel, so Dan's admin persona has real business outcomes attached (discovery call conversions). Treat admin UX as first-class, not an afterthought.
+The agent-showcase is also part of the Just In Time AI inbound funnel, so Owner's admin persona has real business outcomes attached (discovery call conversions). Treat admin UX as first-class, not an afterthought.
