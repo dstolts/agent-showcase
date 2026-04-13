@@ -64,7 +64,13 @@
 - Low-quality submissions (fake ROI, ChatGPT wrapper sold as "agent") dilute credibility
 - No clear way to measure "did showcase drive a discovery call?"
 - Homepage hero content gets stale without a rotation mechanism
-**How they would evaluate a mockup:** This persona asks: "Does the admin panel make moderation a 30-second-per-card review? Can I see click-through and share metrics per card? Can I rotate homepage features with one click? Is spam submission hard enough that bots don't flood the queue?" They hate admin flows that take longer than the submission flow itself, missing analytics, and any system that requires manual CSV exports to answer "how's the showcase doing this month?"
+**Binding design constraints (from `CoWork/docs/personas/owner-dan.md`):**
+1. **ADHD as a disability, not a preference** -- split-attention is expensive; hidden state is forgotten; multi-step navigation breaks flow. Hide nothing that is currently actionable. Moderation queue must not hide pending submissions behind a "filter" click.
+2. **Minimize noise** -- every element must earn its place. Decorative badges, duplicate status labels, and tooltips on obvious UI all add cognitive load. Admin dashboard must not repeat the same submission count in three different widgets.
+3. **Maximize 1-click discoverable context** -- critical context must be reachable in ONE click. When deciding to approve a card, the full card preview + submitter history + spam signal must all be 1-click reachable, not spread across tabs.
+4. **Fast decision + move-on** -- intelligent defaults, safe single-click commits, always-available undo/redo. Approve/reject must be a single click; undo an accidental approval must be 1 click too.
+5. **System logs AND remembers** -- the system IS the user's memory. When Dan reopens admin, proactively surface: new submissions since last visit, cards that got traction, moderation decisions from the last 24 hours -- not searched for.
+**How they would evaluate a mockup:** This persona asks: "Does the admin panel make moderation a 30-second-per-card review? Can I see click-through and share metrics per card? Can I rotate homepage features with one click? Is spam submission hard enough that bots don't flood the queue?" They hate admin flows that take longer than the submission flow itself, missing analytics, and any system that requires manual CSV exports to answer "how's the showcase doing this month?" See `CoWork/docs/personas/owner-dan.md` for the canonical profile and constraint rationale.
 
 ### Persona 5: Potential Investor / Analyst
 **Role/Title:** VC associate, industry analyst, or M&A scout looking at the production AI landscape
