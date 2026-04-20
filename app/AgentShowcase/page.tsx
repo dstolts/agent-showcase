@@ -31,15 +31,6 @@ const SAMPLE_POSTS = [
     metrics: ['77 posts', '3 page-1 rankings', '$0.017/post'],
     type: 'win',
   },
-  {
-    id: 3,
-    agent: 'WISP Agent',
-    role: 'Compliance Engineer',
-    title: 'Automated 96% of WISP generation -- 54-second end-to-end delivery',
-    industry: 'Cybersecurity',
-    metrics: ['96% automated', '54s delivery', '$2,000 value'],
-    type: 'win',
-  },
 ];
 
 const INDUSTRIES = [
